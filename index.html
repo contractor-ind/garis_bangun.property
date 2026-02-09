@@ -199,6 +199,8 @@ footer{
 <a href="https://wa.me/62812XXXXXXXX" class="wa">💬 WhatsApp</a>
 
 <script>
+  let harga = localStorage.getItem("harga") || 3500000;
+
 function exportPDF(){
   const { jsPDF } = window.jspdf;
   const pdf = new jsPDF();
@@ -226,6 +228,15 @@ function rupiah(x){
 }
 
 function hitung(){
+  kirimSheet({
+  nama:"Visitor",
+  luas:luas,
+  lantai:lantai,
+  jenis:jenis,
+  material:harga,
+  total:total
+});
+
   let luas = +document.getElementById("luas").value;
   let lantai = +document.getElementById("lantai").value;
   let jenis = +document.getElementById("jenis").value;
