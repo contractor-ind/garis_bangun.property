@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Garis Property - Jasa Bangun & Interior</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
+body {background:#f4f6f8;}
+
+header {
+  background:#0f172a;
+  color:white;
+  padding:20px 50px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+nav a {color:white;margin-left:20px;text-decoration:none;}
+
+.hero {
+  background:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e') center/cover;
+  height:80vh;
+  display:flex;
+  align-items:center;
+  padding:50px;
+  color:white;
+}
+
+.hero-box {
+  background:rgba(0,0,0,0.6);
+  padding:40px;
+  border-radius:10px;
+}
+
+.btn {
+  background:#22c55e;
+  color:white;
+  padding:12px 20px;
+  border-radius:5px;
+  text-decoration:none;
+  display:inline-block;
+}
+
+section {padding:60px 50px;background:white;margin-top:10px;}
+.section-title {text-align:center;font-size:32px;margin-bottom:30px;}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+.card {
+  background:#f9fafb;
+  padding:20px;
+  border-radius:10px;
+  box-shadow:0 4px 8px rgba(0,0,0,.1);
+}
+
+input, select {
+  width:100%;
+  padding:10px;
+  margin-bottom:10px;
+}
+
+footer {
+  background:#0f172a;
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+
+.wa {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:white;
+  padding:15px 20px;
+  border-radius:50px;
+  text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h2>Garis Property</h2>
+  <nav>
+    <a href="#layanan">Layanan</a>
+    <a href="#rab">Estimasi RAB</a>
+    <a href="#kontak">Kontak</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-box">
+    <h1>Jasa Bangun Rumah & Interior</h1>
+    <p>Profesional • Transparan • Bergaransi</p><br>
+    <a href="#rab" class="btn">Hitung RAB Sekarang</a>
+  </div>
+</section>
+
+<section id="layanan">
+<h2 class="section-title">Layanan Kami</h2>
+<div class="grid">
+  <div class="card">🏠 Bangun Rumah</div>
+  <div class="card">🏢 Bangun Ruko</div>
+  <div class="card">🛋 Interior</div>
+  <div class="card">📐 Desain & RAB</div>
+</div>
+</section>
+
+<!-- RAB -->
+<section id="rab">
+<h2 class="section-title">Estimasi RAB Otomatis</h2>
+
+<div class="grid">
+  <div>
+    <label>Luas Bangunan (m²)</label>
+    <input type="number" id="luas">
+
+    <label>Jenis Bangunan</label>
+    <select id="jenis">
+      <option value="3500000">Rumah Standar (3.5 jt/m²)</option>
+      <option value="4500000">Rumah Premium (4.5 jt/m²)</option>
+      <option value="5000000">Ruko</option>
+      <option value="3000000">Interior</option>
+    </select>
+
+    <button onclick="hitungRAB()" class="btn">Hitung Estimasi</button>
+  </div>
+
+  <div class="card">
+    <h3>Hasil Estimasi</h3>
+    <p id="hasil">Masukkan data...</p>
+    <a id="btnWA" target="_blank" class="btn" style="display:none;">Kirim ke WhatsApp</a>
+  </div>
+</div>
+</section>
+
+<section id="kontak">
+<h2 class="section-title">Kontak</h2>
+<p>📍 Yogyakarta</p>
+<p>📞 0812-XXXX-XXXX</p>
+<p>📧 garisproperty@gmail.com</p>
+</section>
+
+<footer>
+© 2026 Garis Property
+</footer>
+
+<a href="https://wa.me/6282332972255" class="wa">💬 WhatsApp</a>
+
+<script>
+function hitungRAB(){
+  let luas = document.getElementById("luas").value;
+  let harga = document.getElementById("jenis").value;
+  let total = luas * harga;
+
+  let rupiah = new Intl.NumberFormat('id-ID',{
+    style:'currency', currency:'IDR'
+  }).format(total);
+
+  document.getElementById("hasil").innerHTML = 
+    "Total Estimasi: <b>"+rupiah+"</b>";
+
+  let waText = encodeURIComponent(
+    "Halo Garis Property, saya mau estimasi:\n"+
+    "Luas: "+luas+" m2\n"+
+    "Total: "+rupiah
+  );
+
+  let waLink = "https://wa.me/6282332972255?text="+waText;
+  let btn = document.getElementById("btnWA");
+  btn.href = waLink;
+  btn.style.display = "inline-block";
+}
+</script>
+
+</body>
+</html>
