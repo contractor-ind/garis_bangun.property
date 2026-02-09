@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <meta charset="UTF-8">
 <title>Garis Property | Estimasi RAB Pro</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -165,6 +166,7 @@ footer{
 <!-- OUTPUT -->
 <div class="card">
   <h3>Rincian RAB</h3>
+<button class="btn" onclick="exportPDF()">Export PDF</button>
 
   <table>
     <thead>
@@ -197,6 +199,26 @@ footer{
 <a href="https://wa.me/62812XXXXXXXX" class="wa">💬 WhatsApp</a>
 
 <script>
+function exportPDF(){
+  const { jsPDF } = window.jspdf;
+  const pdf = new jsPDF();
+
+  pdf.setFontSize(14);
+  pdf.text("RAB GARIS PROPERTY", 20, 20);
+
+  let y = 40;
+  document.querySelectorAll("#rincian tr").forEach(row=>{
+    let cols = row.querySelectorAll("td");
+    pdf.text(cols[0].innerText, 20, y);
+    pdf.text(cols[1].innerText, 120, y);
+    y += 10;
+  });
+
+  pdf.text("TOTAL: " + document.getElementById("total").innerText, 20, y+10);
+  pdf.save("RAB-Garis-Property.pdf");
+}
+</script>
+
 function rupiah(x){
   return new Intl.NumberFormat('id-ID',{
     style:'currency',currency:'IDR'
