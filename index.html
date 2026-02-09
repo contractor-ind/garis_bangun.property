@@ -2,78 +2,103 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Garis Property - Jasa Bangun & Interior</title>
+<title>Garis Property | Estimasi RAB Pro</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-* {margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
-body {background:#f4f6f8;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#f1f5f9}
 
-header {
-  background:#0f172a;
+header{
+  background:#020617;
   color:white;
-  padding:20px 50px;
+  padding:20px 40px;
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
 
-nav a {color:white;margin-left:20px;text-decoration:none;}
+nav a{color:white;margin-left:20px;text-decoration:none;font-weight:bold}
 
-.hero {
-  background:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e') center/cover;
-  height:80vh;
-  display:flex;
-  align-items:center;
-  padding:50px;
+.hero{
+  background:#0f172a;
   color:white;
+  padding:80px 40px;
 }
 
-.hero-box {
-  background:rgba(0,0,0,0.6);
-  padding:40px;
-  border-radius:10px;
-}
+.hero h1{font-size:40px}
+.hero p{margin:15px 0}
 
-.btn {
+.btn{
   background:#22c55e;
-  color:white;
   padding:12px 20px;
-  border-radius:5px;
+  color:white;
+  border:none;
+  border-radius:6px;
+  font-weight:bold;
+  cursor:pointer;
   text-decoration:none;
-  display:inline-block;
 }
 
-section {padding:60px 50px;background:white;margin-top:10px;}
-.section-title {text-align:center;font-size:32px;margin-bottom:30px;}
+section{
+  padding:60px 40px;
+  background:white;
+  margin-top:10px;
+}
 
-.grid {
+.section-title{
+  text-align:center;
+  font-size:32px;
+  margin-bottom:30px;
+}
+
+.grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:20px;
 }
 
-.card {
-  background:#f9fafb;
+.card{
+  background:#f8fafc;
   padding:20px;
   border-radius:10px;
-  box-shadow:0 4px 8px rgba(0,0,0,.1);
+  box-shadow:0 4px 10px rgba(0,0,0,.1);
 }
 
-input, select {
+label{font-weight:bold}
+input,select{
   width:100%;
   padding:10px;
-  margin-bottom:10px;
+  margin:8px 0 15px;
 }
 
-footer {
-  background:#0f172a;
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:10px;
+}
+
+table th, table td{
+  border:1px solid #ccc;
+  padding:10px;
+  text-align:right;
+}
+
+table th{text-align:left;background:#e2e8f0}
+
+tfoot td{
+  font-weight:bold;
+  background:#c7d2fe;
+}
+
+footer{
+  background:#020617;
   color:white;
   text-align:center;
   padding:20px;
 }
 
-.wa {
+.wa{
   position:fixed;
   bottom:20px;
   right:20px;
@@ -82,6 +107,7 @@ footer {
   padding:15px 20px;
   border-radius:50px;
   text-decoration:none;
+  font-weight:bold;
 }
 </style>
 </head>
@@ -91,55 +117,69 @@ footer {
 <header>
   <h2>Garis Property</h2>
   <nav>
-    <a href="#layanan">Layanan</a>
     <a href="#rab">Estimasi RAB</a>
     <a href="#kontak">Kontak</a>
   </nav>
 </header>
 
-<section class="hero">
-  <div class="hero-box">
-    <h1>Jasa Bangun Rumah & Interior</h1>
-    <p>Profesional • Transparan • Bergaransi</p><br>
-    <a href="#rab" class="btn">Hitung RAB Sekarang</a>
-  </div>
-</section>
-
-<section id="layanan">
-<h2 class="section-title">Layanan Kami</h2>
-<div class="grid">
-  <div class="card">🏠 Bangun Rumah</div>
-  <div class="card">🏢 Bangun Ruko</div>
-  <div class="card">🛋 Interior</div>
-  <div class="card">📐 Desain & RAB</div>
+<div class="hero">
+  <h1>Estimasi RAB Bangunan Profesional</h1>
+  <p>Rumah • Ruko • Interior | Transparan & Akurat</p>
+  <a href="#rab" class="btn">Hitung Sekarang</a>
 </div>
-</section>
 
-<!-- RAB -->
 <section id="rab">
-<h2 class="section-title">Estimasi RAB Otomatis</h2>
+<h2 class="section-title">Estimasi RAB Level PRO</h2>
 
 <div class="grid">
-  <div>
-    <label>Luas Bangunan (m²)</label>
-    <input type="number" id="luas">
 
-    <label>Jenis Bangunan</label>
-    <select id="jenis">
-      <option value="3500000">Rumah Standar (3.5 jt/m²)</option>
-      <option value="4500000">Rumah Premium (4.5 jt/m²)</option>
-      <option value="5000000">Ruko</option>
-      <option value="3000000">Interior</option>
-    </select>
+<!-- INPUT -->
+<div class="card">
+  <label>Luas Bangunan (m²)</label>
+  <input type="number" id="luas" placeholder="Contoh: 120">
 
-    <button onclick="hitungRAB()" class="btn">Hitung Estimasi</button>
-  </div>
+  <label>Jumlah Lantai</label>
+  <select id="lantai">
+    <option value="1">1 Lantai</option>
+    <option value="1.8">2 Lantai</option>
+    <option value="2.5">3 Lantai</option>
+  </select>
 
-  <div class="card">
-    <h3>Hasil Estimasi</h3>
-    <p id="hasil">Masukkan data...</p>
-    <a id="btnWA" target="_blank" class="btn" style="display:none;">Kirim ke WhatsApp</a>
-  </div>
+  <label>Jenis Bangunan</label>
+  <select id="jenis">
+    <option value="1">Rumah</option>
+    <option value="1.2">Ruko</option>
+    <option value="0.8">Interior</option>
+  </select>
+
+  <label>Kualitas Material</label>
+  <select id="material">
+    <option value="3500000">Standar (3.5 jt/m²)</option>
+    <option value="4500000">Menengah (4.5 jt/m²)</option>
+    <option value="6000000">Premium (6 jt/m²)</option>
+  </select>
+
+  <button class="btn" onclick="hitung()">Hitung RAB</button>
+</div>
+
+<!-- OUTPUT -->
+<div class="card">
+  <h3>Rincian RAB</h3>
+
+  <table>
+    <thead>
+      <tr><th>Item</th><th>Biaya</th></tr>
+    </thead>
+    <tbody id="rincian"></tbody>
+    <tfoot>
+      <tr><td>Total</td><td id="total"></td></tr>
+    </tfoot>
+  </table>
+
+  <br>
+  <a id="btnWA" class="btn" target="_blank" style="display:none">Kirim ke WhatsApp</a>
+</div>
+
 </div>
 </section>
 
@@ -154,31 +194,53 @@ footer {
 © 2026 Garis Property
 </footer>
 
-<a href="https://wa.me/6282332972255" class="wa">💬 WhatsApp</a>
+<a href="https://wa.me/62812XXXXXXXX" class="wa">💬 WhatsApp</a>
 
 <script>
-function hitungRAB(){
-  let luas = document.getElementById("luas").value;
-  let harga = document.getElementById("jenis").value;
-  let total = luas * harga;
+function rupiah(x){
+  return new Intl.NumberFormat('id-ID',{
+    style:'currency',currency:'IDR'
+  }).format(x);
+}
 
-  let rupiah = new Intl.NumberFormat('id-ID',{
-    style:'currency', currency:'IDR'
-  }).format(total);
+function hitung(){
+  let luas = +document.getElementById("luas").value;
+  let lantai = +document.getElementById("lantai").value;
+  let jenis = +document.getElementById("jenis").value;
+  let harga = +document.getElementById("material").value;
 
-  document.getElementById("hasil").innerHTML = 
-    "Total Estimasi: <b>"+rupiah+"</b>";
+  let dasar = luas * harga * lantai * jenis;
 
-  let waText = encodeURIComponent(
-    "Halo Garis Property, saya mau estimasi:\n"+
-    "Luas: "+luas+" m2\n"+
-    "Total: "+rupiah
+  let data = {
+    "Persiapan (5%)": dasar * 0.05,
+    "Pondasi (15%)": dasar * 0.15,
+    "Struktur (30%)": dasar * 0.30,
+    "Dinding (15%)": dasar * 0.15,
+    "Atap (10%)": dasar * 0.10,
+    "Finishing (25%)": dasar * 0.25
+  };
+
+  let html="";
+  let total=0;
+  for(let k in data){
+    total+=data[k];
+    html+=`<tr><td>${k}</td><td>${rupiah(data[k])}</td></tr>`;
+  }
+
+  document.getElementById("rincian").innerHTML=html;
+  document.getElementById("total").innerHTML=rupiah(total);
+
+  let text = encodeURIComponent(
+    "Halo Garis Property,%0A"+
+    "Estimasi RAB:%0A"+
+    "Luas: "+luas+" m2%0A"+
+    "Total: "+rupiah(total)
   );
 
-  let waLink = "https://wa.me/6282332972255?text="+waText;
-  let btn = document.getElementById("btnWA");
-  btn.href = waLink;
-  btn.style.display = "inline-block";
+  let wa="https://wa.me/6282332972255?text="+text;
+  let btn=document.getElementById("btnWA");
+  btn.href=wa;
+  btn.style.display="inline-block";
 }
 </script>
 
