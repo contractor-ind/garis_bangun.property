@@ -1,0 +1,11 @@
+<h2>Admin Garis Property</h2>
+<label>Harga Standar / m²</label>
+<input id="harga" value="3500000">
+<button onclick="simpan()">Simpan</button>
+
+<script>
+function simpan(){
+ localStorage.setItem("harga",document.getElementById("harga").value);
+ alert("Harga disimpan");
+}
+</script>
